@@ -1,6 +1,7 @@
 ﻿using EventShare.Data.Enums;
 using EventShare.Web.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace EventShare.Web.ViewModels
@@ -30,6 +31,10 @@ namespace EventShare.Web.ViewModels
         [Required]
         [EnumDataType(typeof(EventStatus))]
         public EventStatus Status { get; set; }
+
+        public int LikersCount { get; set; }
+
+        public bool Liked { get; set; }
 
         public ApplicationUser Publisher { get; set; }
     }

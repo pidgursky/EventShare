@@ -1,8 +1,9 @@
-﻿using EventShare.Web.Data;
+﻿using System.Linq;
+using System.Security.Claims;
+using EventShare.Web.Data;
 using EventShare.Web.Models;
 using EventShare.Web.ViewModels;
-using MongoDB.Bson;
-
+using Microsoft.AspNetCore.Http;
 using MongoEvent = EventShare.Data.Models.Event;
 
 namespace EventShare.Web.Extensions
@@ -41,6 +42,8 @@ namespace EventShare.Web.Extensions
                 Details = @event.Details,
                 DateAndTime = @event.DateAndTime,
                 Status = @event.Status,
+                LikersCount = @event.LikersCount,
+                Liked = @event.Liked,
                 Publisher = context.Users.Find(@event.PublisherId)
             };
         }

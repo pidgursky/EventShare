@@ -10,6 +10,8 @@ namespace EventShare.Data
     {
         public DbSet<Event> Events { get; set; }
 
+        public DbSet<EventLiker> EventLikers { get; set; }
+
         public EventShareDbContext()
             : this(new DbContextOptions<EventShareDbContext>())
         {
