@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 
 namespace EventShare.Api
 {
@@ -24,6 +25,9 @@ namespace EventShare.Api
 
             services.AddDbContext<EventShareDbContext>(options =>
                 options.UseMongoDb(Configuration.GetConnectionString("MongoDbConnection")));
+
+            IConnectionMultiplexer redis = ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection"));
+            services.AddScoped(s => redis.GetDatabase());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
