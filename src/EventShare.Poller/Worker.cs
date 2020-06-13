@@ -11,7 +11,7 @@ namespace EventShare.Poller
 {
     public class Worker : BackgroundService
     {
-        private readonly TimeSpan _workerPeriod = TimeSpan.FromSeconds(5);
+        private readonly TimeSpan _workerPeriod = TimeSpan.FromSeconds(10);
 
         private readonly ILogger<Worker> _logger;
         private readonly IEventPoller _eventPoller;
